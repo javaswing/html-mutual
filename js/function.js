@@ -2,6 +2,242 @@
 const kt = window.jQuery;
 const gt = LocomotiveScroll;
 
+const Dt = window.matchMedia("screen and (max-width: 1023px)");
+function Lt(t) {
+    if (t.matches) {
+        var n = function() {
+            var t = e().timeline();
+            t.to(".megamenu-navigation .slide-line", {
+                duration: .5,
+                y: 50,
+                stagger: .025
+            }),
+            t.to(".menumenu-bg", {
+                duration: .5,
+                height: "0%"
+            }),
+            t.to(".megamenu", {
+                duration: .5,
+                zIndex: -1,
+                visibility: "hidden",
+                opacity: 0
+            })
+        };
+        document.addEventListener("touchmove", (function(t) {
+            1 != kt(t.target).closest(".megamenu").length && t.preventDefault()
+        }
+        ), {
+            passive: !1
+        }),
+        kt(".megamenu a").on("click", (function() {
+            n(),
+            setTimeout((function() {
+                kt("#menu-toggle").removeClass("is-open"),
+                kt("body").removeClass("is-open")
+            }
+            ), 1e3)
+        }
+        )),
+        kt("#menu-toggle").on("click", (function(t) {
+            kt(this).toggleClass("is-open"),
+            kt("body").toggleClass("is-open"),
+            kt("body").hasClass("is-open") ? setTimeout((function() {
+                !function() {
+                    var t = e().timeline();
+                    t.set(".megamenu", {
+                        zIndex: -1,
+                        visibility: "hidden",
+                        opacity: 0
+                    }),
+                    t.set(".megamenu-navigation .slide-line", {
+                        y: 50,
+                        stagger: .025
+                    }),
+                    t.to(".megamenu", {
+                        duration: .5,
+                        zIndex: 40,
+                        visibility: "visible",
+                        opacity: 1
+                    }),
+                    t.to(".menumenu-bg", {
+                        duration: .5,
+                        height: "100%"
+                    }),
+                    t.to(".megamenu-navigation .slide-line", {
+                        duration: .8,
+                        y: 0,
+                        stagger: .025
+                    })
+                }()
+            }
+            ), 150) : setTimeout((function() {
+                n()
+            }
+            ), 150)
+        }
+        ))
+    }
+}
+ 
+function Et() {
+    var t = gsap.timeline();
+    t.to(".home .gallery__item-img .gallery__item-post", .5, {
+        duration: .5,
+        ease: Sine.easeInOut,
+        scale: .5,
+        stagger: .025
+    }),
+    t.to(".home .gallery__item-img .gallery__item-post", .5, {
+        duration: .5,
+        ease: Sine.easeInOut,
+        width: "0%",
+        stagger: .025
+    }),
+    t.to(".page-transition", .5, {
+        duration: .5,
+        height: "100%",
+        top: "0%"
+    }),
+    t.to(".page-loading-logo-wrap", .5, {
+        duration: .5,
+        zIndex: 1,
+        visibility: "visible",
+        opacity: 1
+    }),
+    t.set(".page-loading-logo-wrap", {
+        visibility: "hidden",
+        opacity: 0,
+        zIndex: -1,
+        delay: .5
+    }),
+    t.to(".page-transition", .5, {
+        duration: .5,
+        height: "100%",
+        top: "100%",
+        delay: .3
+    }),
+    t.set(".page-transition", {
+        top: "-100%"
+    })
+}
+
+function St() {
+    var t = gsap.timeline();
+    t.to(".page-transition", .5, {
+        duration: .5,
+        height: "100%",
+        top: "0%"
+    }),
+    t.to(".page-loading-logo-wrap", .5, {
+        duration: .5,
+        zIndex: 1,
+        visibility: "visible",
+        opacity: 1
+    }),
+    t.set(".page-loading-logo-wrap", {
+        visibility: "hidden",
+        opacity: 0,
+        zIndex: -1,
+        delay: .5
+    }),
+    t.to(".page-transition", .5, {
+        duration: .5,
+        height: "100%",
+        top: "100%",
+        delay: .3
+    }),
+    t.set(".page-transition", {
+        top: "-100%"
+    })
+}
+
+
+
+
+
+
+function At() {
+    if (kt(".home").length) {
+        var t = gsap.timeline();
+        t.to(".home .gallery__item-img .gallery__item-post", .5, {
+            duration: .5,
+            ease: Power3.easeOut,
+            scale: .5,
+            stagger: .05,
+            delay: 2.5
+        }),
+        t.to(".home .gallery__item-img .gallery__item-post", .5, {
+            duration: .5,
+            ease: Power3.easeOut,
+            width: "100%",
+            stagger: .05
+        }),
+        t.to(".home .gallery__item-img .gallery__item-post", .5, {
+            duration: .1,
+            ease: Sine.easeInOut,
+            scale: 1,
+            stagger: .05
+        })
+    }
+}
+
+
+function Ct() {
+    if (kt(".home").length) {
+        var t = gsap.timeline();
+        t.to(".home .gallery__item-img .gallery__item-post", .5, {
+            duration: .5,
+            ease: Power3.easeOut,
+            scale: .5,
+            stagger: .05
+        }),
+        t.to(".home .gallery__item-img .gallery__item-post", .5, {
+            duration: .5,
+            ease: Power3.easeOut,
+            width: "100%",
+            stagger: .05
+        }),
+        t.to(".home .gallery__item-img .gallery__item-post", .5, {
+            duration: .1,
+            ease: Sine.easeInOut,
+            scale: 1,
+            stagger: .05
+        })
+    }
+}
+
+(Tt = gsap.timeline()).set(".page-transition", {
+    duration: .5,
+    height: "100%",
+    top: "0%"
+}),
+Tt.to(".page-loading-logo-wrap", .5, {
+    duration: .5,
+    zIndex: 1,
+    visibility: "visible",
+    opacity: 1
+}),
+window.setTimeout((function() {
+    document.body.classList.remove("is-ready");
+    var t = gsap.timeline();
+    t.to(".page-loading-logo-wrap", .5, {
+        visibility: "hidden",
+        opacity: 0,
+        zIndex: -1,
+        delay: .5
+    }),
+    t.to(".page-transition", .5, {
+        duration: .5,
+        height: "100%",
+        top: "100%",
+        delay: .3
+    }),
+    t.set(".page-transition", {
+        top: "-100%"
+    })
+}
+), 2500);
+
 function Pt() {
     if ("true" == document.querySelector("[data-scroll-container]").getAttribute("data-horizontal")) {
         var t = new gt({
@@ -294,66 +530,25 @@ function Pt() {
 }
 
 
-
-
-
-
-
-function At() {
-    if (kt(".home").length) {
-        var t = gsap.timeline();
-        t.to(".home .gallery__item-img .gallery__item-post", .5, {
-            duration: .5,
-            ease: Power3.easeOut,
-            scale: .5,
-            stagger: .05,
-            delay: 2.5
-        }),
-        t.to(".home .gallery__item-img .gallery__item-post", .5, {
-            duration: .5,
-            ease: Power3.easeOut,
-            width: "100%",
-            stagger: .05
-        }),
-        t.to(".home .gallery__item-img .gallery__item-post", .5, {
-            duration: .1,
-            ease: Sine.easeInOut,
-            scale: 1,
-            stagger: .05
-        })
-    }
-}
-
-
-function Ct() {
-    if (kt(".home").length) {
-        var t = gsap.timeline();
-        t.to(".home .gallery__item-img .gallery__item-post", .5, {
-            duration: .5,
-            ease: Power3.easeOut,
-            scale: .5,
-            stagger: .05
-        }),
-        t.to(".home .gallery__item-img .gallery__item-post", .5, {
-            duration: .5,
-            ease: Power3.easeOut,
-            width: "100%",
-            stagger: .05
-        }),
-        t.to(".home .gallery__item-img .gallery__item-post", .5, {
-            duration: .1,
-            ease: Sine.easeInOut,
-            scale: 1,
-            stagger: .05
-        })
-    }
-}
-
 // 图片初始化动画
-At();
+// At();
 
-Ct();
+// Ct();
 
 // 11735 行为@barba/core设置开始
+
+// Pt();
+
+// Dt.addEventListener(Lt)
+Lt(Dt),
+Promise.all([function() {
+    var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "img";
+    return new Promise((function(e) {
+        imagesLoaded(document.querySelectorAll(t), {
+            background: !0
+        }, e)
+    }
+    ))
+}("img")]).then((function() {})),
 
 Pt();
