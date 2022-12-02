@@ -407,6 +407,7 @@ function Pt() {
         }
         ), !1);
         !function t() {
+            debugger
             var n;
             requestAnimationFrame(t),
             g(m = m * (1 - (n = .1)) + p * n),
